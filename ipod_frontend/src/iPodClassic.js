@@ -218,6 +218,8 @@ function IpodClassic() {
             )}
           </div>
         </div>
+        {/* Flexible vertical spacer to help center wheel beneath screen */}
+        <div className="click-wheel-vertical-spacer"></div>
         {/* Click Wheel */}
         <div className="click-wheel-holder">
           <div className="click-wheel"
@@ -235,7 +237,11 @@ function IpodClassic() {
               <span>&#62;&#62;</span>
             </div>
             <div className="wheel-btn wheel-play" onClick={wheel.onPlayPause}>
-              {isPlaying ? <>&#10073;&#10073;</> : <>▶</>}
+              {/* Always show both Play and Pause for authenticity */}
+              <span style={{ fontSize: "15px", verticalAlign: "middle" }}>
+                <span style={{ marginRight: "4px", position: "relative", top: "1px" }}>►</span>
+                <span style={{ fontWeight: "bold" }}>&#10073;&#10073;</span>
+              </span>
             </div>
             {/* (Optional) up/down overlays */}
             <div className="click-wheel-up" onClick={wheel.onUp}></div>

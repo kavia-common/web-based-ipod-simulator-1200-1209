@@ -38,6 +38,8 @@
   padding: 0;
   position: relative;
   user-select: none;
+  /* New: Flex growth for spacer below screen, visually centers wheel */
+  justify-content: flex-start;
 }
 
 .ipod-screen {
@@ -45,9 +47,8 @@
   height: 210px;             /* Keep vertical real estate */
   background: var(--screen-bg);
   border-radius: 8px;        /* Subtler, more accurate corner radius per real iPod */
-  /* Raise the screen: give more space below, less above, equalize top/sides */
-  margin: 22px auto 40px auto; 
-  /* - Top gap reduced (~22px), bottom gap increased (40px) – for larger wheel breathing room */
+  /* Move screen up, allow more space for wheel */
+  margin: 30px auto 0 auto; 
   box-shadow: 0 3px 12px 0 rgba(70, 70, 80, 0.09);
   display: flex;
   flex-direction: row;
@@ -59,6 +60,12 @@
   overflow: hidden; /* Still enforce clip on screen pane */
 }
 
+/* Flexible spacer to push the click wheel lower after screen */
+.click-wheel-vertical-spacer {
+  flex: 1 1 42px;
+  min-height: 19px;
+  max-height: 38px;
+}
 
 .ipod-menu-pane {
   width: 60%;
@@ -182,14 +189,14 @@
   color: #c7c7c7;
 }
 
+/* Center the click wheel region beneath screen, not pushed to bottom */
 .click-wheel-holder {
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
-  flex: 1 1 auto;
-  margin-top: 17px; /* Smaller gap to compensate for enlarged screen */
-  margin-bottom: 30px; /* Slightly less, keeps proportions authentic */
+  align-items: center;
+  margin-top: 16px;
+  margin-bottom: 34px;
 }
 
 .click-wheel {
