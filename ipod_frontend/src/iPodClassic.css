@@ -1,0 +1,291 @@
+:root {
+  --ipod-body-bg: linear-gradient(to bottom, #fafbfc, #d6dadf);
+  --ipod-body: #ececec;
+  --device-shadow: 0 8px 44px 0 rgba(80,80,80,0.08);
+  --screen-bg: #fcfcfc;
+  --menu-pane-bg: #fff;
+  --menu-pane-border: #e0e0e0;
+  --menu-item-active-bg: #1296f7;
+  --menu-item-active-text: #fff;
+  --menu-item-bg: #fff;
+  --menu-item-text: #222;
+  --album-art-border: #bcbcbc;
+  --wheel-bg: #f6f6f6;
+  --wheel-outline: #dfdfdf;
+  --button-text: #888;
+}
+
+.ipod-container {
+  min-height: 100vh;
+  width: 100vw;
+  background: #f0f1f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ipod-device {
+  width: 340px;
+  height: 610px;
+  background: var(--ipod-body-bg), var(--ipod-body);
+  border: 4px solid #ededed;
+  border-radius: 24px;
+  box-shadow: var(--device-shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 0 0px 0;
+  position: relative;
+  user-select: none;
+}
+
+.ipod-screen {
+  width: 274px;
+  height: 190px;
+  background: var(--screen-bg);
+  border-radius: 8px;
+  margin: 32px auto 12px auto;
+  box-shadow: 0 3px 9px 0 rgba(70, 70, 80, 0.06);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  border: 1.5px solid #e0e0e0;
+  position: relative;
+  z-index: 2;
+}
+
+.ipod-menu-pane {
+  width: 60%;
+  min-width: 0;
+  height: 100%;
+  background: var(--menu-pane-bg);
+  padding: 0px 0px;
+  border-radius: 8px 0 0 8px;
+  border-right: 1.5px solid var(--menu-pane-border);
+  display: flex;
+  flex-direction: column;
+}
+
+.ipod-menu-header {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  color: #111;
+  font-weight: normal;
+  padding: 10px 10px 5px 10px;
+  border-bottom: 1.5px solid #eee;
+  letter-spacing: 1.5px;
+}
+
+.ipod-menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 0 0;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ipod-menu-list li {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  color: var(--menu-item-text);
+  background: var(--menu-item-bg);
+  padding: 8px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: 400;
+  transition: background 0.11s, color 0.1s;
+  text-align: left;
+}
+.ipod-menu-list li.active {
+  background: var(--menu-item-active-bg);
+  color: var(--menu-item-active-text);
+  font-weight: bold;
+}
+.ipod-menu-list li:active {
+  filter: brightness(0.98);
+}
+
+.ipod-screen-divider {
+  width: 4px;
+  height: 92%;
+  margin: 2% 0;
+  background: #eaeaea;
+  border-radius: 2px;
+  align-self: center;
+}
+
+.ipod-album-art {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 16px 7px 0 7px;
+}
+.album-art-nowplaying {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 88px;
+}
+.album-art-nowplaying img {
+  width: 88px;
+  height: 88px;
+  border-radius: 7px;
+  border: 2px solid var(--album-art-border);
+  box-shadow: 0 2.8px 6px 0 rgba(120,120,110,0.09);
+  background: #fff;
+  object-fit: cover;
+}
+.nowplaying-songinfo {
+  margin-top: 9px;
+  text-align: center;
+}
+.nowplaying-title {
+  font-size: 13px;
+  font-weight: bold;
+  color: #222;
+}
+.nowplaying-artist {
+  color: #666;
+  font-size: 12px;
+  margin-top: 1px;
+  margin-bottom: 3px;
+}
+.nowplaying-status {
+  font-size: 11px;
+  color: #1296f7;
+}
+
+.album-art-placeholder {
+  width: 88px;
+  height: 88px;
+  border-radius: 7px;
+  background: #f2f3f5;
+  border: 2.5px dashed #d6d7da;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 38px;
+  color: #c7c7c7;
+}
+
+.click-wheel-holder {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex: 1 1 auto;
+  margin-top: 6px;
+  margin-bottom: 0px;
+}
+
+.click-wheel {
+  width: 190px;
+  height: 190px;
+  background: var(--wheel-bg);
+  border-radius: 50%;
+  box-shadow: 0 1.5px 9px 0 rgba(111,112,112,0.10) inset, 0 2px 16px 0 rgba(68,68,88,0.08);
+  border: 3px solid var(--wheel-outline);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  z-index: 1;
+  user-select: none;
+}
+
+.wheel-btn {
+  position: absolute;
+  text-align: center;
+  color: var(--button-text);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  cursor: pointer;
+  z-index: 2;
+  user-select: none;
+  font-weight: 490;
+  letter-spacing: 0.17em;
+  opacity: 0.78;
+  padding: 0;
+  margin: 0;
+}
+.wheel-btn:active {
+  opacity: 1;
+}
+.wheel-menu { top:18px; left:0; right:0; margin: 0 auto; width: 60px; }
+.wheel-left { top:0; left:19px; bottom:0; margin:auto 0; }
+.wheel-right { top: 0; right:19px; bottom:0; margin:auto 0; }
+.wheel-play { bottom:17px; left:0; right:0; margin: 0 auto; width: 48px; }
+
+/* Invisible overlays for up/down area if wanted */
+.click-wheel-up {
+  position: absolute;
+  left: 50%;
+  top: 13px;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 36px;
+  cursor: pointer;
+  z-index: 1;
+  background: transparent;
+}
+.click-wheel-down {
+  position: absolute;
+  left: 50%;
+  bottom: 13px;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 36px;
+  cursor: pointer;
+  z-index: 1;
+  background: transparent;
+}
+
+/* Center button styling */
+.wheel-center {
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%,-50%);
+  width: 62px; height: 62px;
+  background: #fcfcfc;
+  border-radius: 50%;
+  box-shadow: 0 1.5px 6px 0 rgba(100,100,120,0.08), 0 3px 8px 0 rgba(110,110,110,0.08) inset;
+  border: 2.6px solid #dfdfdf;
+  cursor: pointer;
+  z-index: 3;
+  transition: filter 0.1s;
+}
+.wheel-center:active {
+  filter: brightness(0.93);
+}
+
+/* Focus ring for click wheel for accessibility */
+.click-wheel:focus {
+  outline: 2px solid #1296f7;
+}
+
+@media (max-width: 520px), (max-height: 680px) {
+  .ipod-device {
+    width: 96vw;
+    max-width: 360px;
+    height: 90vh;
+    max-height: 570px;
+  }
+  .ipod-screen {
+    width: 83vw;
+    max-width: 245px;
+    height: 31vw;
+    min-height: 137px;
+    max-height: 175px;
+    margin: 17px auto 8px auto;
+  }
+  .click-wheel { width: 135px; height: 135px; }
+  .wheel-center { width: 44px; height: 44px; }
+  .album-art-nowplaying img, .album-art-placeholder { width: 64px; height: 64px; }
+}
