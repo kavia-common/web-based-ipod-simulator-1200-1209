@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./iPodClassic.css";
+import mockAlbumArt from "./mock-album-art.jpg";
 
 // Demo Playlist
 const demoTracks = [
@@ -214,7 +215,7 @@ function IpodClassic() {
             ) : (
               <div className="album-art-placeholder" style={{ padding: 0 }}>
                 <img
-                  src={require("./mock-album-art.jpg")}
+                  src={mockAlbumArt}
                   alt="Album Art Placeholder"
                   style={{
                     width: "88px",
