@@ -26,7 +26,7 @@
 
 .ipod-device {
   width: 340px;
-  height: 515px; /* reduced for better real-world aspect ratio */
+  height: 430px; /* Major reduction for better classic iPod aspect ratio (~1:1.26) */
   background: var(--ipod-body-bg), var(--ipod-body);
   border: 4px solid #ededed;
   border-radius: 24px;
@@ -34,6 +34,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* Reduce bottom padding (let wheel sit closer) and reserve a screen-wheel gap of 12px */
   padding: 0 0 0px 0;
   position: relative;
   user-select: none;
@@ -41,10 +42,10 @@
 
 .ipod-screen {
   width: 274px;
-  height: 190px;
+  height: 140px; /* Reduce height, so screen is top 33–35% of device */
   background: var(--screen-bg);
   border-radius: 8px;
-  margin: 32px auto 12px auto;
+  margin: 28px auto 10px auto; /* less top margin */
   box-shadow: 0 3px 9px 0 rgba(70, 70, 80, 0.06);
   display: flex;
   flex-direction: row;
@@ -184,13 +185,13 @@
   justify-content: center;
   align-items: flex-end;
   flex: 1 1 auto;
-  margin-top: 6px;
-  margin-bottom: 0px;
+  margin-top: 8px; /* slightly more gap between screen and wheel (reference: 12px) */
+  margin-bottom: 22px; /* ensure wheel is visually centered vertically in lower half */
 }
 
 .click-wheel {
-  width: 190px;
-  height: 190px;
+  width: 178px;
+  height: 178px;
   background: var(--wheel-bg);
   border-radius: 50%;
   box-shadow: 0 1.5px 9px 0 rgba(111,112,112,0.10) inset, 0 2px 16px 0 rgba(68,68,88,0.08);
@@ -199,7 +200,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 0;
   z-index: 1;
   user-select: none;
 }
@@ -243,21 +244,20 @@
 /* << and >> now placed at proper +/-90deg polar coordinates *strictly inside* wheel */
 .wheel-prev {
   position: absolute;
-  left: 23px;             /* moved slightly further inward for true inset */
+  left: 18px;             /* 5px further in, visually fully inside for stricter ref. */
   top: 50%;
   transform: translateY(-50%);
-  width: 32px;
+  width: 30px;
   text-align: center;
   pointer-events: auto;
   /* visually ensures button doesn't bleed outside the wheel */
-  /* responsive fine-tuned below */
 }
 .wheel-next {
   position: absolute;
-  right: 23px;           /* moved slightly further inward for true inset */
+  right: 18px;
   top: 50%;
   transform: translateY(-50%);
-  width: 32px;
+  width: 30px;
   text-align: center;
   pointer-events: auto;
 }
@@ -331,35 +331,35 @@
 @media (max-width: 520px), (max-height: 680px) {
   .ipod-device {
     width: 96vw;
-    max-width: 360px;
-    height: 76vw;
-    min-height: 340px;
-    max-height: 410px;
+    max-width: 340px;
+    height: 62vw;
+    min-height: 220px;
+    max-height: 320px;
   }
   .ipod-screen {
     width: 83vw;
-    max-width: 245px;
-    height: 29vw;
-    min-height: 120px;
-    max-height: 154px;
-    margin: 10px auto 7px auto;
+    max-width: 210px;
+    height: 23vw;
+    min-height: 80px;
+    max-height: 118px;
+    margin: 6px auto 6px auto;
     overflow: hidden;
   }
-  .click-wheel { width: 135px; height: 135px; }
-  .wheel-center { width: 44px; height: 44px; }
-  .album-art-nowplaying img, .album-art-placeholder { width: 64px; height: 64px; }
+  .click-wheel { width: 110px; height: 110px; }
+  .wheel-center { width: 36px; height: 36px; }
+  .album-art-nowplaying img, .album-art-placeholder { width: 48px; height: 48px; }
 
   /* Mobilized positions for prev/next inside smaller wheel */
   .wheel-prev {
-    left: 9px;
+    left: 6px;
     top: 50%;
-    width: 26px;
+    width: 18px;
     transform: translateY(-50%);
   }
   .wheel-next {
-    right: 9px;
+    right: 6px;
     top: 50%;
-    width: 26px;
+    width: 18px;
     transform: translateY(-50%);
   }
 }
