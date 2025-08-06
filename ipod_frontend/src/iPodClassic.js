@@ -229,10 +229,10 @@ function IpodClassic() {
               MENU
             </div>
             <div className="wheel-btn wheel-left" onClick={wheel.onPrev}>
-              &#60;&#60;
+              <span>&#60;&#60;</span>
             </div>
             <div className="wheel-btn wheel-right" onClick={wheel.onNext}>
-              &#62;&#62;
+              <span>&#62;&#62;</span>
             </div>
             <div className="wheel-btn wheel-play" onClick={wheel.onPlayPause}>
               {isPlaying ? <>&#10073;&#10073;</> : <>▶</>}
