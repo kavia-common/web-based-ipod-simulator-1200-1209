@@ -41,11 +41,13 @@
 }
 
 .ipod-screen {
-  width: 302px;              /* Was 274; increased for more dominant display */
-  height: 210px;             /* Was 172; increased for more vertical real estate */
+  width: 302px;              /* Remain dominant (authentic look) */
+  height: 210px;             /* Keep vertical real estate */
   background: var(--screen-bg);
-  border-radius: 11px;       /* Slightly larger for a bolder screen look */
-  margin: 34px auto 18px auto; /* Shift down slightly if needed */
+  border-radius: 8px;        /* Subtler, more accurate corner radius per real iPod */
+  /* Raise the screen: give more space below, less above, equalize top/sides */
+  margin: 22px auto 40px auto; 
+  /* - Top gap reduced (~22px), bottom gap increased (40px) – for larger wheel breathing room */
   box-shadow: 0 3px 12px 0 rgba(70, 70, 80, 0.09);
   display: flex;
   flex-direction: row;
@@ -339,11 +341,13 @@
   }
   .ipod-screen {
     width: 91vw;           /* was 83vw; now expand on mobile */
-    max-width: 263px;      /* was 210px; track desktop ratio up */
-    height: 34vw;          /* was 28vw; proportionally larger */
+    max-width: 263px;
+    height: 34vw;
     min-height: 120px;
     max-height: 186px;
-    margin: 8px auto 14px auto;
+    /* Adjust screen vertical position: up on the device, more gap below */
+    margin: 5vw auto 12vw auto;
+    border-radius: 6px;    /* Slightly subtler radii for smaller scale on mobile */
     overflow: hidden;
   }
   .click-wheel-holder {
