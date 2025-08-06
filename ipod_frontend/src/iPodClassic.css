@@ -1,0 +1,396 @@
+:root {
+  --ipod-body-bg: linear-gradient(to bottom, #fafbfc, #d6dadf);
+  --ipod-body: #ececec;
+  --device-shadow: 0 8px 44px 0 rgba(80,80,80,0.08);
+  --screen-bg: #fcfcfc;
+  --menu-pane-bg: #fff;
+  --menu-pane-border: #e0e0e0;
+  --menu-item-active-bg: #1296f7;
+  --menu-item-active-text: #fff;
+  --menu-item-bg: #fff;
+  --menu-item-text: #222;
+  --album-art-border: #bcbcbc;
+  --wheel-bg: #f6f6f6;
+  --wheel-outline: #dfdfdf;
+  --button-text: #888;
+}
+
+.ipod-container {
+  min-height: 100vh;
+  width: 100vw;
+  background: #f0f1f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ipod-device {
+  width: 340px;
+  height: 520px; /* Keep classic aspect ratio */
+  background: var(--ipod-body-bg), var(--ipod-body);
+  border: 4px solid #ededed;
+  border-radius: 24px;
+  box-shadow: var(--device-shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* No bottom padding, screen-wheel gap will be explicit below */
+  padding: 0;
+  position: relative;
+  user-select: none;
+  /* New: Flex growth for spacer below screen, visually centers wheel */
+  justify-content: flex-start;
+}
+
+.ipod-screen {
+  width: 302px;              /* Remain dominant (authentic look) */
+  height: 210px;             /* Keep vertical real estate */
+  background: var(--screen-bg);
+  border-radius: 8px;        /* Subtler, more accurate corner radius per real iPod */
+  /* Move screen up, allow more space for wheel */
+  margin: 30px auto 0 auto; 
+  box-shadow: 0 3px 12px 0 rgba(70, 70, 80, 0.09);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  border: 2px solid #e0e0e0;
+  position: relative;
+  z-index: 2;
+  overflow: hidden; /* Still enforce clip on screen pane */
+}
+
+/* Flexible spacer to push the click wheel lower after screen */
+.click-wheel-vertical-spacer {
+  flex: 1 1 42px;
+  min-height: 19px;
+  max-height: 38px;
+}
+
+.ipod-menu-pane {
+  width: 60%;
+  min-width: 0;
+  height: 100%;
+  background: var(--menu-pane-bg);
+  padding: 0px 0px;
+  border-radius: 8px 0 0 8px;
+  border-right: 1.5px solid var(--menu-pane-border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.ipod-menu-header {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  color: #111;
+  font-weight: normal;
+  padding: 10px 10px 5px 10px;
+  border-bottom: 1.5px solid #eee;
+  letter-spacing: 1.5px;
+}
+
+.ipod-menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 0 0;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+  max-height: calc(100% - 34px); /* header ~28px + space */
+  min-height: 0;
+}
+
+.ipod-menu-list li {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  color: var(--menu-item-text);
+  background: var(--menu-item-bg);
+  padding: 8px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: 400;
+  transition: background 0.11s, color 0.1s;
+  text-align: left;
+}
+.ipod-menu-list li.active {
+  background: var(--menu-item-active-bg);
+  color: var(--menu-item-active-text);
+  font-weight: bold;
+}
+.ipod-menu-list li:active {
+  filter: brightness(0.98);
+}
+
+.ipod-screen-divider {
+  width: 4px;
+  height: 92%;
+  margin: 2% 0;
+  background: #eaeaea;
+  border-radius: 2px;
+  align-self: center;
+}
+
+.ipod-album-art {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 16px 7px 0 7px;
+}
+.album-art-nowplaying {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 88px;
+}
+.album-art-nowplaying img {
+  width: 88px;
+  height: 88px;
+  border-radius: 7px;
+  border: 2px solid var(--album-art-border);
+  box-shadow: 0 2.8px 6px 0 rgba(120,120,110,0.09);
+  background: #fff;
+  object-fit: cover;
+}
+.nowplaying-songinfo {
+  margin-top: 9px;
+  text-align: center;
+}
+.nowplaying-title {
+  font-size: 13px;
+  font-weight: bold;
+  color: #222;
+}
+.nowplaying-artist {
+  color: #666;
+  font-size: 12px;
+  margin-top: 1px;
+  margin-bottom: 3px;
+}
+.nowplaying-status {
+  font-size: 11px;
+  color: #1296f7;
+}
+
+.album-art-placeholder {
+  width: 88px;
+  height: 88px;
+  border-radius: 7px;
+  background: #f2f3f5;
+  border: 2.5px dashed #d6d7da;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-size: 38px;
+  color: #c7c7c7;
+}
+
+/* Center the click wheel region beneath screen, not pushed to bottom */
+.click-wheel-holder {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
+  margin-bottom: 34px;
+}
+
+.click-wheel {
+  width: 178px;
+  height: 178px;
+  background: var(--wheel-bg);
+  border-radius: 50%;
+  box-shadow: 0 1.5px 9px 0 rgba(111,112,112,0.10) inset, 0 2px 16px 0 rgba(68,68,88,0.08);
+  border: 3px solid var(--wheel-outline);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0;
+  z-index: 1;
+  user-select: none;
+}
+
+.wheel-btn {
+  position: absolute;
+  text-align: center;
+  color: var(--button-text);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  cursor: pointer;
+  z-index: 2;
+  user-select: none;
+  font-weight: 490;
+  letter-spacing: 0.17em;
+  opacity: 0.78;
+  padding: 0;
+  margin: 0;
+}
+.wheel-btn:active {
+  opacity: 1;
+}
+
+/* Click wheel direction button polar positions (accurate for 190x190 wheel) */
+/* MENU (top) and PLAY (bottom): keep as was */
+.wheel-menu {
+  top: 15px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 60px;
+}
+.wheel-play {
+  bottom: 15px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 48px;
+  /* Icons are always styled smaller-- no need for extra font-size. */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Ensures small unobtrusive spacing for icon(s) */
+}
+
+/* Subtle reduce vertical space for icon itself, ensures text does not dominate wheel */
+.wheel-play span {
+  line-height: 1 !important;
+  vertical-align: middle;
+  font-size: 10px !important;
+  letter-spacing: 0;
+  opacity: 0.92;
+}
+/* << and >> now placed at proper +/-90deg polar coordinates *strictly inside* wheel */
+.wheel-prev {
+  position: absolute;
+  left: 18px;             /* 5px further in, visually fully inside for stricter ref. */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  text-align: center;
+  pointer-events: auto;
+  /* visually ensures button doesn't bleed outside the wheel */
+}
+.wheel-next {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  text-align: center;
+  pointer-events: auto;
+}
+
+/* Responsive positions for prev/next inside smaller wheel for mobile/short screen:
+   - make sure they stay visually within wheel rim. */
+@media (max-width: 520px), (max-height: 680px) {
+  .wheel-prev {
+    left: 13px;  /* tighter inset for mobile */
+    width: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .wheel-next {
+    right: 13px;
+    width: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+/* Remove legacy .wheel-left and .wheel-right (for << and >>) */
+
+/* Invisible overlays for up/down area if wanted */
+.click-wheel-up {
+  position: absolute;
+  left: 50%;
+  top: 13px;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 36px;
+  cursor: pointer;
+  z-index: 1;
+  background: transparent;
+}
+.click-wheel-down {
+  position: absolute;
+  left: 50%;
+  bottom: 13px;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 36px;
+  cursor: pointer;
+  z-index: 1;
+  background: transparent;
+}
+
+/* Center button styling */
+.wheel-center {
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%,-50%);
+  width: 62px; height: 62px;
+  background: #fcfcfc;
+  border-radius: 50%;
+  box-shadow: 0 1.5px 6px 0 rgba(100,100,120,0.08), 0 3px 8px 0 rgba(110,110,110,0.08) inset;
+  border: 2.6px solid #dfdfdf;
+  cursor: pointer;
+  z-index: 3;
+  transition: filter 0.1s;
+}
+.wheel-center:active {
+  filter: brightness(0.93);
+}
+
+/* Focus ring for click wheel for accessibility */
+.click-wheel:focus {
+  outline: 2px solid #1296f7;
+}
+
+@media (max-width: 520px), (max-height: 680px) {
+  .ipod-device {
+    width: 96vw;
+    max-width: 340px;
+    height: 132vw;
+    min-height: 280px;
+    max-height: 420px;
+  }
+  .ipod-screen {
+    width: 91vw;           /* was 83vw; now expand on mobile */
+    max-width: 263px;
+    height: 34vw;
+    min-height: 120px;
+    max-height: 186px;
+    /* Adjust screen vertical position: up on the device, more gap below */
+    margin: 5vw auto 12vw auto;
+    border-radius: 6px;    /* Slightly subtler radii for smaller scale on mobile */
+    overflow: hidden;
+  }
+  .click-wheel-holder {
+    margin-top: 12px;      /* reduced, screen fills more of device vertical */
+    margin-bottom: 16px;
+  }
+  .click-wheel { width: 110px; height: 110px; }
+  .wheel-center { width: 36px; height: 36px; }
+  .album-art-nowplaying img, .album-art-placeholder { width: 48px; height: 48px; }
+
+  /* Mobilized positions for prev/next inside smaller wheel */
+  .wheel-prev {
+    left: 6px;
+    top: 50%;
+    width: 18px;
+    transform: translateY(-50%);
+  }
+  .wheel-next {
+    right: 6px;
+    top: 50%;
+    width: 18px;
+    transform: translateY(-50%);
+  }
+}
