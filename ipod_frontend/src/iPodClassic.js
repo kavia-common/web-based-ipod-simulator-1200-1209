@@ -224,14 +224,14 @@ function IpodClassic() {
             tabIndex={0}
             aria-label="Click wheel"
           >
-            {/* Compass points */}
+            {/* Compass points - lay out with polar absolute positioning */}
             <div className="wheel-btn wheel-menu" onClick={wheel.onMenu}>
               MENU
             </div>
-            <div className="wheel-btn wheel-left" onClick={wheel.onPrev}>
+            <div className="wheel-btn wheel-prev" onClick={wheel.onPrev}>
               <span>&#60;&#60;</span>
             </div>
-            <div className="wheel-btn wheel-right" onClick={wheel.onNext}>
+            <div className="wheel-btn wheel-next" onClick={wheel.onNext}>
               <span>&#62;&#62;</span>
             </div>
             <div className="wheel-btn wheel-play" onClick={wheel.onPlayPause}>

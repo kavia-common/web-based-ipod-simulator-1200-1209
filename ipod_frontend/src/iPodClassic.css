@@ -26,7 +26,7 @@
 
 .ipod-device {
   width: 340px;
-  height: 610px;
+  height: 515px; /* reduced for better real-world aspect ratio */
   background: var(--ipod-body-bg), var(--ipod-body);
   border: 4px solid #ededed;
   border-radius: 24px;
@@ -223,10 +223,39 @@
 .wheel-btn:active {
   opacity: 1;
 }
-.wheel-menu { top:18px; left:0; right:0; margin: 0 auto; width: 60px; }
-.wheel-left { top:0; left:19px; bottom:0; margin:auto 0; }
-.wheel-right { top: 0; right:19px; bottom:0; margin:auto 0; }
-.wheel-play { bottom:17px; left:0; right:0; margin: 0 auto; width: 48px; }
+
+/* Click wheel direction button polar positions (accurate for 190x190 wheel) */
+/* MENU (top) and PLAY (bottom): keep as was */
+.wheel-menu {
+  top: 15px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 60px;
+}
+.wheel-play {
+  bottom: 15px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 48px;
+}
+/* << and >> now placed at proper +/-90deg polar coordinates inside wheel */
+.wheel-prev {
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  /* let text center horizontally */
+}
+.wheel-next {
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+}
+
+/* Remove legacy .wheel-left and .wheel-right (for << and >>) */
 
 /* Invisible overlays for up/down area if wanted */
 .click-wheel-up {
@@ -279,19 +308,34 @@
   .ipod-device {
     width: 96vw;
     max-width: 360px;
-    height: 90vh;
-    max-height: 570px;
+    height: 76vw;
+    min-height: 340px;
+    max-height: 410px;
   }
   .ipod-screen {
     width: 83vw;
     max-width: 245px;
-    height: 31vw;
-    min-height: 137px;
-    max-height: 175px;
-    margin: 17px auto 8px auto;
+    height: 29vw;
+    min-height: 120px;
+    max-height: 154px;
+    margin: 10px auto 7px auto;
     overflow: hidden;
   }
   .click-wheel { width: 135px; height: 135px; }
   .wheel-center { width: 44px; height: 44px; }
   .album-art-nowplaying img, .album-art-placeholder { width: 64px; height: 64px; }
+
+  /* Mobilized positions for prev/next inside smaller wheel */
+  .wheel-prev {
+    left: 9px;
+    top: 50%;
+    width: 26px;
+    transform: translateY(-50%);
+  }
+  .wheel-next {
+    right: 9px;
+    top: 50%;
+    width: 26px;
+    transform: translateY(-50%);
+  }
 }
