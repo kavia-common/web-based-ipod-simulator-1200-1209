@@ -26,7 +26,7 @@
 
 .ipod-device {
   width: 340px;
-  height: 430px; /* Major reduction for better classic iPod aspect ratio (~1:1.26) */
+  height: 520px; /* Increased height for realistic iPod Classic aspect ratio (~1:1.53) */
   background: var(--ipod-body-bg), var(--ipod-body);
   border: 4px solid #ededed;
   border-radius: 24px;
@@ -34,7 +34,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* Reduce bottom padding (let wheel sit closer) and reserve a screen-wheel gap of 12px */
+  /* Reduced bottom padding, reserve a screen-wheel gap of 16px for authenticity */
   padding: 0 0 0px 0;
   position: relative;
   user-select: none;
@@ -42,10 +42,10 @@
 
 .ipod-screen {
   width: 274px;
-  height: 140px; /* Reduce height, so screen is top 33–35% of device */
+  height: 172px; /* Slightly taller: fill ~33% of the now-taller device, matches reference aspect */
   background: var(--screen-bg);
   border-radius: 8px;
-  margin: 28px auto 10px auto; /* less top margin */
+  margin: 36px auto 14px auto; /* slightly more top margin, more space to click wheel */
   box-shadow: 0 3px 9px 0 rgba(70, 70, 80, 0.06);
   display: flex;
   flex-direction: row;
@@ -185,8 +185,8 @@
   justify-content: center;
   align-items: flex-end;
   flex: 1 1 auto;
-  margin-top: 8px; /* slightly more gap between screen and wheel (reference: 12px) */
-  margin-bottom: 22px; /* ensure wheel is visually centered vertically in lower half */
+  margin-top: 22px; /* more gap between screen and wheel (aligns with taller iPod reference: 12–22px realistic) */
+  margin-bottom: 32px; /* increased: ensure wheel is nicely centered in the added lower half */
 }
 
 .click-wheel {
@@ -332,18 +332,22 @@
   .ipod-device {
     width: 96vw;
     max-width: 340px;
-    height: 62vw;
-    min-height: 220px;
-    max-height: 320px;
+    height: 132vw;  /* keep aspect ratio similar to classic even on mobile */
+    min-height: 280px;
+    max-height: 420px;
   }
   .ipod-screen {
     width: 83vw;
     max-width: 210px;
-    height: 23vw;
-    min-height: 80px;
-    max-height: 118px;
-    margin: 6px auto 6px auto;
+    height: 28vw;
+    min-height: 104px;
+    max-height: 152px;
+    margin: 9px auto 13px auto;
     overflow: hidden;
+  }
+  .click-wheel-holder {
+    margin-top: 17px;
+    margin-bottom: 18px;
   }
   .click-wheel { width: 110px; height: 110px; }
   .wheel-center { width: 36px; height: 36px; }
