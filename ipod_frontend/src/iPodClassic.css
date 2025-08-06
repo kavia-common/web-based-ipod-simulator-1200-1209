@@ -250,6 +250,20 @@
   right: 0;
   margin: 0 auto;
   width: 48px;
+  /* Icons are always styled smaller-- no need for extra font-size. */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Ensures small unobtrusive spacing for icon(s) */
+}
+
+/* Subtle reduce vertical space for icon itself, ensures text does not dominate wheel */
+.wheel-play span {
+  line-height: 1 !important;
+  vertical-align: middle;
+  font-size: 10px !important;
+  letter-spacing: 0;
+  opacity: 0.92;
 }
 /* << and >> now placed at proper +/-90deg polar coordinates *strictly inside* wheel */
 .wheel-prev {

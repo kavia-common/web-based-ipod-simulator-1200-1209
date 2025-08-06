@@ -238,9 +238,22 @@ function IpodClassic() {
             </div>
             <div className="wheel-btn wheel-play" onClick={wheel.onPlayPause}>
               {/* Always show both Play and Pause for authenticity */}
-              <span style={{ fontSize: "15px", verticalAlign: "middle" }}>
-                <span style={{ marginRight: "4px", position: "relative", top: "1px" }}>►</span>
-                <span style={{ fontWeight: "bold" }}>&#10073;&#10073;</span>
+              <span style={{ fontSize: "10px", verticalAlign: "middle", display: "inline-flex", alignItems: "center" }}>
+                <span style={{
+                  marginRight: "2px",
+                  position: "relative",
+                  top: "1px",
+                  fontSize: "10px",
+                  fontWeight: 700,
+                  letterSpacing: "0"
+                }}>►</span>
+                <span style={{
+                  fontWeight: 700,
+                  fontSize: "9px",
+                  position: "relative",
+                  top: "1px",
+                  letterSpacing: "-1px"
+                }}>&#10073;&#10073;</span>
               </span>
             </div>
             {/* (Optional) up/down overlays */}
