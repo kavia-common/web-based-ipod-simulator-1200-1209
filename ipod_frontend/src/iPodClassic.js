@@ -212,8 +212,20 @@ function IpodClassic() {
                 </div>
               </div>
             ) : (
-              <div className="album-art-placeholder">
-                <span role="img" aria-label="no album art">🎵</span>
+              <div className="album-art-placeholder" style={{ padding: 0 }}>
+                <img
+                  src={require("./mock-album-art.jpg")}
+                  alt="Album Art Placeholder"
+                  style={{
+                    width: "88px",
+                    height: "88px",
+                    borderRadius: "7px",
+                    border: "2px solid #bcbcbc",
+                    objectFit: "cover",
+                    boxShadow: "0 2.8px 6px 0 rgba(120,120,110,0.09)",
+                    background: "#fff",
+                  }}
+                />
               </div>
             )}
           </div>
